@@ -33,7 +33,7 @@ flags.DEFINE_integer("N_CLASSES",
                      "Number of prediction classes in the model")
 flags.DEFINE_string("train_data_dir",
                     get_data_path(
-                        dataset_name = 'artem/artem-tiny-imagenet',
+                        dataset_name = 'artem-poc15/tiny-imagenet',
                         local_root = os.path.expanduser('~/Documents/Scratch/tiny_imagenet/'),
                         local_repo = 'tiny-imagenet-200',
                         path = 'train'
@@ -46,7 +46,7 @@ flags.DEFINE_string("train_data_dir",
                     "to use /logs/ when running on ClusterOne cloud.")
 flags.DEFINE_string("val_data_dir",
                     get_data_path(
-                        dataset_name = 'artem/artem-tiny-imagenet',
+                        dataset_name = 'artem-poc15/tiny-imagenet',
                         local_root = os.path.expanduser('~/Documents/Scratch/tiny_imagenet/'),
                         local_repo = 'tiny-imagenet-200',
                         path = 'val/for_keras'
