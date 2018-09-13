@@ -40,7 +40,7 @@ def _parse_function(filename):
 
     return image_decoded
 
-def input_fn(data_path, num_epochs=None, shuffle=True, batch_size=32):
+def input_fn(data_path, shuffle=True, batch_size=32):
     img_files, labels, _ = read_img_dir_for_tf(data_path)
     img_filenames = tf.constant(img_files)
     img_labels = tf.constant(labels)
@@ -54,8 +54,9 @@ def input_fn(data_path, num_epochs=None, shuffle=True, batch_size=32):
     if shuffle:
         dataset = dataset.shuffle(buffer_size=batch_size * 10)
 
-    dataset = dataset.repeat(num_epochs)
+    dataset = dataset.repeat(count=None)
     dataset = dataset.batch(batch_size)
+    dataset = dataset.prefetch(8)
     iterator = dataset.make_one_shot_iterator()
     features, labels = iterator.get_next()
 
